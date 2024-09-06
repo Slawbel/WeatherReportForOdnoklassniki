@@ -11,6 +11,10 @@
 		A24F9EFA2C875282006B3D1F /* StartingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9EF92C875282006B3D1F /* StartingScreen.swift */; };
 		A24F9EFF2C875285006B3D1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A24F9EFE2C875285006B3D1F /* Assets.xcassets */; };
 		A24F9F022C875285006B3D1F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A24F9F012C875285006B3D1F /* Base */; };
+		A24F9F0A2C8B947C006B3D1F /* ApiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F092C8B947C006B3D1F /* ApiViewModel.swift */; };
+		A24F9F0D2C8B94E2006B3D1F /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F0C2C8B94E2006B3D1F /* WeatherModel.swift */; };
+		A24F9F0F2C8B96F4006B3D1F /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F0E2C8B96F4006B3D1F /* CurrentWeather.swift */; };
+		A24F9F112C8B993C006B3D1F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F102C8B993C006B3D1F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		A24F9EFE2C875285006B3D1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A24F9F012C875285006B3D1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A24F9F032C875285006B3D1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A24F9F092C8B947C006B3D1F /* ApiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewModel.swift; sourceTree = "<group>"; };
+		A24F9F0C2C8B94E2006B3D1F /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		A24F9F0E2C8B96F4006B3D1F /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		A24F9F102C8B993C006B3D1F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +60,41 @@
 		A24F9EF42C875282006B3D1F /* WeatherReportForOdnoklassniki */ = {
 			isa = PBXGroup;
 			children = (
+				A24F9F132C8BA405006B3D1F /* ViewModel */,
+				A24F9F122C8B9949006B3D1F /* View */,
+				A24F9F0B2C8B94B4006B3D1F /* Model */,
 				A24F9EF52C875282006B3D1F /* AppDelegate.swift */,
-				A24F9EF92C875282006B3D1F /* StartingScreen.swift */,
+				A24F9F102C8B993C006B3D1F /* Constants.swift */,
 				A24F9EFE2C875285006B3D1F /* Assets.xcassets */,
 				A24F9F002C875285006B3D1F /* LaunchScreen.storyboard */,
 				A24F9F032C875285006B3D1F /* Info.plist */,
 			);
 			path = WeatherReportForOdnoklassniki;
+			sourceTree = "<group>";
+		};
+		A24F9F0B2C8B94B4006B3D1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A24F9F0C2C8B94E2006B3D1F /* WeatherModel.swift */,
+				A24F9F0E2C8B96F4006B3D1F /* CurrentWeather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A24F9F122C8B9949006B3D1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A24F9EF92C875282006B3D1F /* StartingScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A24F9F132C8BA405006B3D1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A24F9F092C8B947C006B3D1F /* ApiViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A24F9EFA2C875282006B3D1F /* StartingScreen.swift in Sources */,
+				A24F9F0F2C8B96F4006B3D1F /* CurrentWeather.swift in Sources */,
+				A24F9F0A2C8B947C006B3D1F /* ApiViewModel.swift in Sources */,
+				A24F9F0D2C8B94E2006B3D1F /* WeatherModel.swift in Sources */,
 				A24F9EF62C875282006B3D1F /* AppDelegate.swift in Sources */,
+				A24F9F112C8B993C006B3D1F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +321,6 @@
 				INFOPLIST_FILE = WeatherReportForOdnoklassniki/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,7 +348,6 @@
 				INFOPLIST_FILE = WeatherReportForOdnoklassniki/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
