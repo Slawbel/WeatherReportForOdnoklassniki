@@ -3,13 +3,11 @@ import UIKit
 class ApiViewModel: ObservableObject {
     
     var urlString: String
-   // var url: URL?
     var session: URLSession
     var onCompletion: ((CurrentWeather) -> Void)?
     
     init() {
         self.urlString = ""
-        //self.url = nil
         self.session = URLSession(configuration: .default)
     }
     
