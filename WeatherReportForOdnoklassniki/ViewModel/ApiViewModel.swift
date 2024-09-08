@@ -11,7 +11,7 @@ class ApiViewModel: ObservableObject {
         self.session = URLSession(configuration: .default)
     }
     
-    func fetchWeatherAPIRequest(forCity city: String?) {
+    func fetchWeatherAPIRequest(forCity city: String?, completionHandler: @escaping (CurrentWeather) -> Void) {
         guard let city = city else { return }
         self.urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
  

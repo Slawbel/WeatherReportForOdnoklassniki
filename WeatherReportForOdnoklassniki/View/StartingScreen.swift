@@ -14,6 +14,8 @@ class StartingScreen: UIViewController, UICollectionViewDataSource, UICollection
     private var heightOfScreen = [Int(UIScreen.main.bounds.height/8), Int(UIScreen.main.bounds.height/2), Int(UIScreen.main.bounds.height)]
     private var widthOfScreen = Int(UIScreen.main.bounds.width)
     
+    let apiVM = ApiViewModel()
+    
     // Создаем layout для UICollectionView
     private let layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -71,26 +73,53 @@ class StartingScreen: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Определяем ячейку
         let cell: UICollectionViewCell
         
+        // Определяем фактическую высоту ячейки
+        let cellHeight = CGFloat(heightOfScreen[currentHeightIndex[indexPath.item]])
+
         // Выбираем тип ячейки в зависимости от значения индекса высоты
         switch currentHeightIndex[indexPath.item] {
         case 0:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen0", for: indexPath) as! CellForStartingScreen0
+            let cell0 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen0", for: indexPath) as! CellForStartingScreen0
+            self.apiVM.fetchWeatherAPIRequest(forCity: "Tokyo") { currentWeather in
+                DispatchQueue.main.async {
+                    cell0.cityName.text = currentWeather.cityName
+                    cell0.temperature.text = currentWeather.temperatureString
+                    cell0.setConfigurationsForCell0(cellHeight: cellHeight) // Используем фактическую высоту
+                }
+            }
+            cell = cell0
         case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen1", for: indexPath) as! CellForStartingScreen1
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen1", for: indexPath) as! CellForStartingScreen1
+            self.apiVM.fetchWeatherAPIRequest(forCity: "Tokyo") { currentWeather in
+                DispatchQueue.main.async {
+                    cell1.cityName = currentWeather.cityName
+                    cell1.temperature = currentWeather.temperatureString
+                    cell1.setConfigurationsForCell1()  // Дополнительно передайте высоту, если нужно
+                }
+            }
+            cell = cell1
         case 2:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen2", for: indexPath) as! CellForStartingScreen2
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen2", for: indexPath) as! CellForStartingScreen2
+            self.apiVM.fetchWeatherAPIRequest(forCity: "Tokyo") { currentWeather in
+                DispatchQueue.main.async {
+                    cell2.cityName = currentWeather.cityName
+                    cell2.temperature = currentWeather.temperatureString
+                    cell2.setConfigurationsForCell2()  // Дополнительно передайте высоту, если нужно
+                }
+            }
+            cell = cell2
         default:
             fatalError("Unexpected index")
         }
         
-        // Настраиваем цвет фона ячейки
         cell.backgroundColor = .white
         
         return cell
     }
+
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let currentHeight = heightOfScreen[currentHeightIndex[indexPath.item]]
