@@ -8,11 +8,13 @@ class CellForStartingScreen0: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        cityName.text = "Find city"
-        temperature.text = ""
-        
+        // Добавляем лейблы в contentView
         contentView.addSubview(cityName)
         contentView.addSubview(temperature)
+        
+        // Настраиваем текстовое выравнивание
+        cityName.textAlignment = .left
+        temperature.textAlignment = .right
     }
     
     required init?(coder: NSCoder) {
@@ -23,18 +25,24 @@ class CellForStartingScreen0: UICollectionViewCell {
         cityName.translatesAutoresizingMaskIntoConstraints = false
         temperature.translatesAutoresizingMaskIntoConstraints = false
         
-        let horizontalPaddingForCity = contentView.frame.width / 20
-        NSLayoutConstraint.activate([
-            cityName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalPaddingForCity),
-            cityName.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: contentView.frame.width * 0.75 - horizontalPaddingForCity)
-        ])
-        cityName.textAlignment = .left
+        let horizontalPadding: CGFloat = 10 // Установите отступ между лейблами и краем ячейки
         
         NSLayoutConstraint.activate([
-            temperature.leadingAnchor.constraint(equalTo: cityName.trailingAnchor, constant: horizontalPaddingForCity),
-            temperature.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPaddingForCity)
+            // Настройки для cityName
+            cityName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalPadding),
+            cityName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: horizontalPadding),
+            cityName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -horizontalPadding),
+            cityName.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75) // 3/4 ширины
         ])
-        temperature.textAlignment = .right
+        
+        NSLayoutConstraint.activate([
+            // Настройки для temperature
+            temperature.leadingAnchor.constraint(equalTo: cityName.trailingAnchor, constant: horizontalPadding),
+            temperature.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPadding),
+            temperature.topAnchor.constraint(equalTo: contentView.topAnchor, constant: horizontalPadding),
+            temperature.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -horizontalPadding),
+            temperature.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.25) // 1/4 ширины
+        ])
         
         // Динамически изменяем размер шрифта в зависимости от высоты ячейки
         let fontSize = cellHeight / 4
@@ -42,4 +50,7 @@ class CellForStartingScreen0: UICollectionViewCell {
         temperature.font = UIFont.systemFont(ofSize: fontSize)
     }
 
+    func updateWeatherData(completion: @escaping () -> Void) {
+        completion()
+    }
 }
