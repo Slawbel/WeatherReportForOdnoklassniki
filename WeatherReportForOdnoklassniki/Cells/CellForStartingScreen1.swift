@@ -13,7 +13,7 @@ class CellForStartingScreen1: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Добавляем элементы в contentView
+        // Add elements to contentView
         contentView.addSubview(cityName)
         contentView.addSubview(temperature)
         contentView.addSubview(tempFeelsLike)
@@ -22,7 +22,7 @@ class CellForStartingScreen1: UICollectionViewCell {
         contentView.addSubview(temperatureLabel)
         contentView.addSubview(feelsLikeLabel)
         
-        // Настраиваем текстовое выравнивание и стили
+        // Configure label and button styles
         cityName.textAlignment = .left
         cityName.adjustsFontSizeToFitWidth = true
         cityName.minimumScaleFactor = 0.5
@@ -38,13 +38,11 @@ class CellForStartingScreen1: UICollectionViewCell {
         tempFeelsLike.minimumScaleFactor = 0.5
         tempFeelsLike.numberOfLines = 1
         
-        // Настраиваем кнопки и изображения
         selectCityButton.backgroundColor = .red
         selectCityButton.setTitleColor(.white, for: .normal)
         
-        // Настройка цвета иконки
         weatherImage.contentMode = .scaleAspectFit
-        weatherImage.tintColor = .black // Устанавливаем цвет изображения
+        weatherImage.tintColor = .black
         
         temperatureLabel.text = "Temperature:"
         feelsLikeLabel.text = "Feels like:"
@@ -56,12 +54,17 @@ class CellForStartingScreen1: UICollectionViewCell {
         tempFeelsLike.translatesAutoresizingMaskIntoConstraints = false
         selectCityButton.translatesAutoresizingMaskIntoConstraints = false
         weatherImage.translatesAutoresizingMaskIntoConstraints = false
-        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
-        feelsLikeLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Update corner radius for the button
+        selectCityButton.layer.cornerRadius = selectCityButton.bounds.height / 2
+        selectCityButton.clipsToBounds = true
     }
     
     func setConfigurationsForCell1(cellHeight: CGFloat) {
@@ -87,7 +90,7 @@ class CellForStartingScreen1: UICollectionViewCell {
             selectCityButton.leadingAnchor.constraint(equalTo: cityName.trailingAnchor, constant: horizontalPadding),
             selectCityButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: verticalPadding),
             selectCityButton.heightAnchor.constraint(equalToConstant: heightForItem),
-            selectCityButton.widthAnchor.constraint(equalTo: selectCityButton.heightAnchor), // Квадратная кнопка
+            selectCityButton.widthAnchor.constraint(equalTo: selectCityButton.heightAnchor), // Square button
             selectCityButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -horizontalPadding),
 
             temperatureLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: horizontalPadding),

@@ -18,6 +18,9 @@
 		A24F9F152C8D2928006B3D1F /* CellForStartingScreen0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F142C8D2928006B3D1F /* CellForStartingScreen0.swift */; };
 		A24F9F172C8D2A94006B3D1F /* CellForStartingScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F162C8D2A94006B3D1F /* CellForStartingScreen1.swift */; };
 		A24F9F192C8D2AC0006B3D1F /* CellForStartingScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F182C8D2AC0006B3D1F /* CellForStartingScreen2.swift */; };
+		A24F9F222C8E9226006B3D1F /* MapSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F212C8E9226006B3D1F /* MapSettings.swift */; };
+		A24F9F242C8E924A006B3D1F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F232C8E924A006B3D1F /* MapViewController.swift */; };
+		A24F9F262C8E94CF006B3D1F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24F9F252C8E94CF006B3D1F /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		A24F9F142C8D2928006B3D1F /* CellForStartingScreen0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForStartingScreen0.swift; sourceTree = "<group>"; };
 		A24F9F162C8D2A94006B3D1F /* CellForStartingScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForStartingScreen1.swift; sourceTree = "<group>"; };
 		A24F9F182C8D2AC0006B3D1F /* CellForStartingScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForStartingScreen2.swift; sourceTree = "<group>"; };
+		A24F9F212C8E9226006B3D1F /* MapSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettings.swift; sourceTree = "<group>"; };
+		A24F9F232C8E924A006B3D1F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A24F9F252C8E94CF006B3D1F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,9 @@
 				A24F9EFE2C875285006B3D1F /* Assets.xcassets */,
 				A24F9F002C875285006B3D1F /* LaunchScreen.storyboard */,
 				A24F9F032C875285006B3D1F /* Info.plist */,
+				A24F9F212C8E9226006B3D1F /* MapSettings.swift */,
+				A24F9F232C8E924A006B3D1F /* MapViewController.swift */,
+				A24F9F252C8E94CF006B3D1F /* Coordinator.swift */,
 			);
 			path = WeatherReportForOdnoklassniki;
 			sourceTree = "<group>";
@@ -184,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A24F9F242C8E924A006B3D1F /* MapViewController.swift in Sources */,
 				A24F9EFA2C875282006B3D1F /* StartingScreen.swift in Sources */,
 				A24F9F0F2C8B96F4006B3D1F /* CurrentWeather.swift in Sources */,
 				A24F9F192C8D2AC0006B3D1F /* CellForStartingScreen2.swift in Sources */,
@@ -191,8 +201,10 @@
 				A24F9F172C8D2A94006B3D1F /* CellForStartingScreen1.swift in Sources */,
 				A24F9F152C8D2928006B3D1F /* CellForStartingScreen0.swift in Sources */,
 				A24F9F0D2C8B94E2006B3D1F /* WeatherModel.swift in Sources */,
+				A24F9F262C8E94CF006B3D1F /* Coordinator.swift in Sources */,
 				A24F9EF62C875282006B3D1F /* AppDelegate.swift in Sources */,
 				A24F9F112C8B993C006B3D1F /* Constants.swift in Sources */,
+				A24F9F222C8E9226006B3D1F /* MapSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
