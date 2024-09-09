@@ -67,44 +67,48 @@ class StartingScreen: UIViewController, UICollectionViewDataSource, UICollection
         case 0:
             let cell0 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen0", for: indexPath) as! CellForStartingScreen0
             let city = "Tokyo"
-            cell0.updateWeatherData { [weak self] in
-                guard let self = self else { return }
-                self.apiVM.fetchWeatherAPIRequest(forCity: city) { currentWeather in
-                    DispatchQueue.main.async {
-                        cell0.cityName.text = currentWeather.cityName
-                        cell0.temperature.text = currentWeather.temperatureString + "°C" // Обязательно добавьте "°C"
-                        cell0.setConfigurationsForCell0(cellHeight: cellHeight)
-                    }
+            apiVM.fetchWeatherAPIRequest(forCity: city) { [weak cell0] currentWeather in
+                DispatchQueue.main.async {
+                    cell0?.cityName.text = currentWeather.cityName
+                    cell0?.temperature.text = currentWeather.temperatureString + "°C"
+                    cell0?.setConfigurationsForCell0(cellHeight: cellHeight)
                 }
             }
             cell = cell0
         case 1:
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen1", for: indexPath) as! CellForStartingScreen1
             let city = "Tokyo"
-            cell1.updateWeatherData { [weak self] in
-                guard let self = self else { return }
-                self.apiVM.fetchWeatherAPIRequest(forCity: city) { currentWeather in
-                    DispatchQueue.main.async {
-                        cell1.cityName.text = currentWeather.cityName
-                        cell1.temperature.text = currentWeather.temperatureString + "°C"
-                        cell1.tempFeelsLike.text = currentWeather.feelsLikeTemperatureString + "°C"
-                        cell1.weatherImage.image = UIImage(systemName: currentWeather.systemIconNameString)
-                        cell1.setConfigurationsForCell1(cellHeight: cellHeight)
-                    }
+            apiVM.fetchWeatherAPIRequest(forCity: city) { [weak cell1] currentWeather in
+                DispatchQueue.main.async {
+                    cell1?.cityName.text = currentWeather.cityName
+                    cell1?.temperature.text = currentWeather.temperatureString + "°C"
+                    cell1?.tempFeelsLike.text = currentWeather.feelsLikeTemperatureString + "°C"
+                    cell1?.weatherImage.image = UIImage(systemName: currentWeather.systemIconNameString)
+                    cell1?.setConfigurationsForCell1(cellHeight: cellHeight)
                 }
             }
+            
+            // Добавление действия для кнопки выбора города
+            cell1.selectCityButton.addTarget(self, action: #selector(selectCityButtonTapped(_:)), for: .touchUpInside)
             cell = cell1
         case 2:
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CellForStartingScreen2", for: indexPath) as! CellForStartingScreen2
             let city = "Tokyo"
-            cell2.updateWeatherData { [weak self] in
-                guard let self = self else { return }
-                self.apiVM.fetchWeatherAPIRequest(forCity: city) { currentWeather in
-                    DispatchQueue.main.async {
-                        cell2.cityName.text = currentWeather.cityName
-                        cell2.temperature.text = currentWeather.temperatureString + "°C"
-                        cell2.setConfigurationsForCell2(cellHeight: cellHeight)
-                    }
+            apiVM.fetchWeatherAPIRequest(forCity: city) { [weak cell2] currentWeather in
+                DispatchQueue.main.async {
+                    cell2?.cityName.text = currentWeather.cityName
+                    cell2?.temperature.text = currentWeather.temperatureString + "°C"
+                    cell2?.tempFeelsLike.text = currentWeather.feelsLikeTemperatureString + "°C"
+                    cell2?.pressureValue.text = currentWeather.pressureString
+                    cell2?.humidityValue.text = currentWeather.humidityString
+                    cell2?.windSpeedValue.text = currentWeather.windSpeedString
+                    cell2?.cloudinessValue.text = currentWeather.cloudinessString
+                    cell2?.sunriseValue.text = currentWeather.sunriseTime
+                    cell2?.sunsetValue.text = currentWeather.sunsetTime
+                    cell2?.windDegreeValue.text = currentWeather.windDegreeString
+                    cell2?.weatherImage.image = UIImage(systemName: currentWeather.systemIconNameString)
+                    cell2?.setConfigurationsForCell2(cellHeight: cellHeight)
+
                 }
             }
             cell = cell2
@@ -115,6 +119,7 @@ class StartingScreen: UIViewController, UICollectionViewDataSource, UICollection
         cell.backgroundColor = .white
         return cell
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let currentHeight = heightOfScreen[currentHeightIndex[indexPath.item]]
@@ -126,5 +131,11 @@ class StartingScreen: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.performBatchUpdates({
             collectionView.reloadItems(at: [indexPath])
         }, completion: nil)
+    }
+    
+    @objc private func selectCityButtonTapped(_ sender: UIButton) {
+        // Реализуйте логику выбора города
+        // Например, переход на экран карты или отображение диалога выбора города
+        print("Select city button tapped")
     }
 }

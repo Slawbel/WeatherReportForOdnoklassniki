@@ -51,13 +51,6 @@ class CellForStartingScreen1: UICollectionViewCell {
         
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         feelsLikeLabel.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setConfigurationsForCell1(cellHeight: CGFloat) {
         cityName.translatesAutoresizingMaskIntoConstraints = false
         temperature.translatesAutoresizingMaskIntoConstraints = false
         tempFeelsLike.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +58,13 @@ class CellForStartingScreen1: UICollectionViewCell {
         weatherImage.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         feelsLikeLabel.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setConfigurationsForCell1(cellHeight: CGFloat) {
         
         let horizontalPadding: CGFloat = 12
         let verticalPadding: CGFloat = 12
@@ -123,9 +123,5 @@ class CellForStartingScreen1: UICollectionViewCell {
         selectCityButton.layoutIfNeeded()
         selectCityButton.layer.cornerRadius = selectCityButton.bounds.height / 2
         selectCityButton.clipsToBounds = true
-    }
-    
-    func updateWeatherData(completion: @escaping () -> Void) {
-        completion()
     }
 }
